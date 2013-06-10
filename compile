@@ -1,0 +1,7 @@
+echo "-----> Installing Echoprint Codegen"
+cd $1
+curl https://s3.amazonaws.com/purple-cloud-s3/heroku-binaries/echoprint-codegen -s -O
+curl https://s3.amazonaws.com/purple-cloud-s3/heroku-binaries/ffmpeg -s -O
+mkdir -p vendor/echoprint-codegen
+mv echoprint-codegen vendor/echoprint-codegen
+mv ffmpeg vendor/echoprint-codegen
