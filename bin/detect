@@ -1,2 +1,5 @@
-echo "Echoprint Codegen"
+#!/bin/sh
+
+# this pack is valid for all apps
+echo "echoprint-codegen"
 exit 0

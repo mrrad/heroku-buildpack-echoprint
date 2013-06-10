@@ -1,5 +1,23 @@
-echo "-----> Installing Echoprint Codegen"
-cd $1
-curl https://s3.amazonaws.com/purple-cloud-s3/heroku-binaries/echoprint-codegen-heroku.gz -s -O
-mkdir -p vendor/echoprint-codegen
-tar -C vendor/echoprint-codegen -xvf echoprint-codegen-heroku.gz
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Installing echoprint-codegen"
+BUILD_DIR=$1
+VENDOR_DIR="vendor"
+DOWNLOAD_URL="http://s3.amazonaws.com/purple-cloud-binaries/heroku/echoprint-codegen.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
+
+echo "exporting PATH and LIBRARY_PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/echoprint-codegen.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:vendor/echoprint-codegen/bin"' >> $PROFILE_PATH
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/echoprint-codegen/lib"' >> $PROFILE_PATH
