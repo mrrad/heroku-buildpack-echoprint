@@ -14,7 +14,8 @@ To use this buildpack, you should prepare .buildpacks file that contains this bu
     
     $ cat .buildpacks
     https://github.com/shunjikonishi/heroku-buildpack-ffmpeg
-    https://github.com/mrrad/heroku-buildpack-echoprint
+    https://github.com/mrrad/heroku-buildpack-taglib
+    https://github.com/mrrad/heroku-buildpack-echoprint-codegen
 
     $ heroku create --buildpack https://github.com/ddollar/heroku-buildpack-multi
 
