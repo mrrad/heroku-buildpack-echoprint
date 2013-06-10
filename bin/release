@@ -1,5 +1,5 @@
 cat <<EOF
 ---
 config_vars:
-	PATH: $PATH:/app/vendor/echoprint-codegen
+	PATH: $PATH:/app/vendor/echoprint-codegen:/app/vendor/ffmpeg/bin
 	EOF
